@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module LED_Flow_tb();
 
     reg clk;
@@ -18,7 +20,7 @@ module LED_Flow_tb();
         #201;
         reset_n = 1;
         #2000;
-        $stop;ß
+        $stop;
     end
 
 endmodule
