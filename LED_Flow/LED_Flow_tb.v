@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module LED_Flow_tb();
 
     reg clk;
