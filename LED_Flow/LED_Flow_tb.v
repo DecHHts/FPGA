@@ -19,8 +19,9 @@ module LED_Flow_tb();
         reset_n = 0;
         #201;
         reset_n = 1;
-        #2000;
-        $stop;ß
+        #2000_000_000;
+        #2000_000_000;
+        $stop;
     end
 
 endmodule
