@@ -2,21 +2,27 @@ module uart_byte_tx(
     clk,
     reset_n,
     data,
+    send_go,
     uart_tx,
-    led
+    led,
+    tx_done
     );
     
     input clk;
     input reset_n;
+    input send_go;
     input [7:0] data;
     output reg uart_tx;
     output reg led;
+    output tx_done;
+    
+    parameter BAUD = 9600;
+    parameter CLOCK_FREQ = 50_000_000;
     
     //波特率计数器 1/9600 * 10^9 /20 -1 = 5207
-    reg [12:0] baud_div_cnt;
+    reg [29:0] baud_div_cnt;
     reg en_baud_cnt;
-    parameter MCNT_BAUD = 5208 - 1;
-
+    parameter MCNT_BAUD = CLOCK_FREQ / BAUD - 1;
     always@(posedge clk or negedge reset_n)
     begin
         if(!reset_n)
@@ -46,17 +52,17 @@ module uart_byte_tx(
     end
 
     //定时1s时间的计数器
-    reg [25:0] delay_cnt;
-    parameter MCNT_DLY = 50_000_000 - 1;
-    always@(posedge clk or negedge reset_n)
-    begin
-        if(!reset_n)
-            delay_cnt <= 0;
-        else if(delay_cnt == MCNT_DLY)
-            delay_cnt <= 0;
-        else
-            delay_cnt <= delay_cnt + 1'b1;
-    end
+//    reg [25:0] delay_cnt;
+//    parameter MCNT_DLY = 50_000_000 - 1;
+//    always@(posedge clk or negedge reset_n)
+//    begin
+//        if(!reset_n)
+//            delay_cnt <= 0;
+//        else if(delay_cnt == MCNT_DLY)
+//            delay_cnt <= 0;
+//        else
+//            delay_cnt <= delay_cnt + 1'b1;
+//    end
     
     
     
@@ -67,7 +73,7 @@ module uart_byte_tx(
     begin
         if(!reset_n)
             r_data <= 0;
-        else if(delay_cnt == MCNT_DLY)
+        else if(send_go)
             r_data <= data;
         else
             r_data <= r_data;
@@ -101,7 +107,7 @@ module uart_byte_tx(
     begin
         if(!reset_n)
             led <= 0;
-        else if((bit_cnt == 9) && (baud_div_cnt == MCNT_BAUD))
+        else if(tx_done)
             led <= ~led;
     end
     
@@ -110,9 +116,11 @@ module uart_byte_tx(
     begin
         if(!reset_n)
             en_baud_cnt <= 0;
-        else if(delay_cnt == MCNT_DLY)
+        else if(send_go)
             en_baud_cnt <= 1;
-        else if((bit_cnt == 9) && (baud_div_cnt == MCNT_BAUD))
+        else if(tx_done)
             en_baud_cnt <= 0;
     end
+    
+    assign tx_done = (bit_cnt == 9) && (baud_div_cnt == MCNT_BAUD);
 endmodule
