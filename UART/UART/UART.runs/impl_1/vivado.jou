@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat Feb  7 14:17:19 2026
+# Process ID         : 11856
+# Current directory  : E:/Study_File/FPGA/UART/UART/UART.runs/impl_1
+# Command line       : vivado.exe -log uart_byte_tx.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source uart_byte_tx.tcl -notrace
+# Log file           : E:/Study_File/FPGA/UART/UART/UART.runs/impl_1/uart_byte_tx.vdi
+# Journal file       : E:/Study_File/FPGA/UART/UART/UART.runs/impl_1\vivado.jou
+# Running On         : ChristopherWindows
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 9 7950X 16-Core Processor            
+# CPU Frequency      : 4491 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 32
+# Host memory        : 67601 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 71895 MB
+# Available Virtual  : 56646 MB
+#-----------------------------------------------------------
+source uart_byte_tx.tcl -notrace

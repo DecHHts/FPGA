@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+E:/Study_File/FPGA/UART/UART/UART.sim/sim_1/behav/xsim/glbl.v,1756381830,verilog,,,,glbl,,,,,,,,
+E:/Study_File/FPGA/UART/UART/UART.srcs/sim_1/new/uart_byte_tx_tb.v,1770443920,verilog,,,,uart_byte_tx_tb,,,G:/vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+E:/Study_File/FPGA/UART/UART/UART.srcs/sources_1/new/uart_byte_tx.v,1770444100,verilog,,E:/Study_File/FPGA/UART/UART/UART.srcs/sim_1/new/uart_byte_tx_tb.v,,uart_byte_tx,,,G:/vivado/2025.2/Vivado/data/rsb/busdef,,,,,
