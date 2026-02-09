@@ -48,7 +48,7 @@ module uart_byte_rx(
     parameter MCNT_BAUD = CLOCK_FREQ / BAUD - 1;
     parameter MCNT_BIT = 9;
 
-    assign tmp_rx_done = (baud_div_cnt == MCNT_BAUD) && (bit_cnt == 9);
+    assign tmp_rx_done = (baud_div_cnt == MCNT_BAUD/2) && (bit_cnt == 9);
     always@(posedge clk) begin
         rx_done <= tmp_rx_done;
         if(rx_done)
@@ -84,13 +84,17 @@ module uart_byte_rx(
     always@(posedge clk or negedge reset_n)begin
         if(!reset_n)
             bit_cnt <= 0;
-        else if(baud_div_cnt == MCNT_BAUD) begin
-            if(bit_cnt == MCNT_BIT)begin
-                bit_cnt <=0;
-            end else begin
-                bit_cnt <= bit_cnt + 1'b1;
-            end
+        else if(tmp_rx_done)begin
+            bit_cnt <= 0;
+        end else if(baud_div_cnt == MCNT_BAUD)begin
+            bit_cnt <= bit_cnt + 1'b1;
         end
+            // if(baud_div_cnt == MCNT_BAUD) begin
+            //     if(bit_cnt == MCNT_BIT)begin
+            //         bit_cnt <=0;
+            //     end else begin
+            //         bit_cnt <= bit_cnt + 1'b1;
+            // end
     end
 
 
