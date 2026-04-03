@@ -15,21 +15,22 @@ module MUX2_tb();
     
     initial begin
         a = 0; b = 0; sel = 0;
-        #20
+        #20;
         a = 0; b = 0; sel = 1;
-        #20
+        #20;
         a = 0; b = 1; sel = 0;
-        #20
+        #20;
         a = 0; b = 1; sel = 1;
-        #20
+        #20;
         a = 1; b = 0; sel = 0;
-        #20
+        #20;
         a = 1; b = 0; sel = 1;
-        #20
+        #20;
         a = 1; b = 1; sel = 0;
-        #20
+        #20;
         a = 1; b = 1; sel = 1;
-        #20
+        #20;
+        $finish;
     end
 
 endmodule
