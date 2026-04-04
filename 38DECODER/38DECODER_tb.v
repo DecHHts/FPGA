@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module _38DECODER_tb();
     reg [2:0] a;
     wire [7:0] y;
