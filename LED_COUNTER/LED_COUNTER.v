@@ -11,7 +11,7 @@ module LED_COUNTER(
     always@(posedge clk or negedge rst_n)begin
         if(!rst_n)
             counter <= 0;
-        else if(counter == 25_000_000)
+        else if(counter == 25_000_000-1)
             counter <= 0;
         else
             counter <= counter + 1'd1;
@@ -19,6 +19,7 @@ module LED_COUNTER(
     always@(posedge clk or negedge rst_n)begin
         if(!rst_n)
             led <= 0;
-        else if(counter == 25_000_0000)
+        else if(counter == 25_000_000-1)
             led <= ~led;
+    end
 endmodule

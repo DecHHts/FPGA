@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module LED_COUNTER_tb();
     reg clk;
     reg rst_n;
