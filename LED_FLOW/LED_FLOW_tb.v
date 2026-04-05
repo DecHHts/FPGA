@@ -4,7 +4,7 @@ module LED_FLOW_tb();
     reg rst_n;
     wire [7:0] led;
 
-    LED_FLOW(
+    LED_FLOW U_LED_FLOW(
         .clk(clk),
         .rst_n(rst_n),
         .led(led)
@@ -17,7 +17,7 @@ module LED_FLOW_tb();
         rst_n = 0;
         #201;
         rst_n = 1;
-        #2000_000_000;
+        #3000_000_000;
         $finish;
     end
 endmodule
