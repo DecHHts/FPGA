@@ -5,7 +5,7 @@ module LED_FLOW(
 );
     input clk;
     input rst_n;
-    output [7:0] led;
+    output reg [7:0] led;
 
     reg [24:0] clk_counter;
     reg [7:0]  led_counter;
