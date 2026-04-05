@@ -8,7 +8,7 @@ module LED_FLOW(
     output reg [7:0] led;
 
     reg [24:0] clk_counter;
-    reg [3:0]  led_counter;
+    reg [2:0]  led_counter;
     always@(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
             clk_counter <= 0;
