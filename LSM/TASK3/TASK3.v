@@ -37,7 +37,8 @@ module TASK3(
         end else begin
             if((state_counter == 7) && (clk_counter == 24'd12_500_000 - 1))
                 button_status <= button;
-            led <= button_status[state_counter];
+            if(clk_counter == 24'd12_500_000 - 1)
+                led <= button_status[state_counter];
         end
     end
 endmodule
