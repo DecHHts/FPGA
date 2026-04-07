@@ -6,10 +6,10 @@ module TASK3(
 );
     input clk;
     input rst_n;
-    input [7:0] button;
+    input [2:0] button;
     output reg led;
 
-    reg [7:0] button_status;
+    reg [2:0] button_status;
     reg [23:0] clk_counter;
     reg [2:0] state_counter;
     always@(posedge clk or negedge rst_n)begin
@@ -26,7 +26,7 @@ module TASK3(
     always@(posedge clk or negedge rst_n)begin
         if(!rst_n)
             state_counter <= 0;
-        else
+        else if(clk_counter == 24'd12_500_000 - 1)
             state_counter <= state_counter + 1;
     end
 
@@ -35,9 +35,9 @@ module TASK3(
             button_status <= button;
             led <= 0;
         end else begin
-            if((state_counter == 7) && (clk_counter == 24'd12_500_000 - 1))
-                button_status <= button;
-            if(clk_counter == 24'd12_500_000 - 1)
+            if(clk_counter == 24'd12_500_000 - 1)begin
+                if(state_counter == 7)
+                    button_status <= button;
                 led <= button_status[state_counter];
         end
     end
